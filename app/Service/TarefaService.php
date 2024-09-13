@@ -17,4 +17,33 @@ class TarefaService
 
         return $dados;
     }
+
+    public function findById($id)
+    {
+        $tarefa = Tarefa::find($id);
+        if ($tarefa == null) {
+            return [
+                'status' => false,
+                'message' => 'Tarefa não encontrada'
+            ];
+        }
+
+        return [
+            'status' => true,
+            'message' => 'Pesquisa realizada com sucesso',
+            'data' => $tarefa
+        ];
+    }
+
+   
+    public function getAll()
+    {
+        $tarefa = Tarefa::all();
+
+        return [
+            'status' => true,
+            'message' => 'Pesquisa realizada com sucesso',
+            'data' => $tarefa
+        ];
+    }
 };
